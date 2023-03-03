@@ -1,0 +1,141 @@
+import 'package:worldcup_app/models/fixture/card.dart';
+import 'package:worldcup_app/models/fixture/goalscorer.dart';
+import 'package:worldcup_app/models/lineup.dart';
+import 'package:worldcup_app/models/statistic/item_statistic.dart';
+import 'package:worldcup_app/models/substitutions.dart';
+
+List<Fixture> listFixturesFromJson(List<dynamic> json) =>
+    json.map<Fixture>((fixture) => Fixture.fromJson(fixture)).toList();
+
+class Fixture {
+  String matchId;
+  String countryId;
+  String countryName;
+  String leagueId;
+  String leagueName;
+  String matchDate;
+  String matchStatus;
+  String matchTime;
+  String matchHometeamId;
+  String matchHometeamName;
+  String matchHometeamScore;
+  String matchAwayteamName;
+  String matchAwayteamId;
+  String matchAwayteamScore;
+  String matchHometeamHalftimeScore;
+  String matchAwayteamHalftimeScore;
+  String matchHometeamExtraScore;
+  String matchAwayteamExtraScore;
+  String matchHometeamPenaltyScore;
+  String matchAwayteamPenaltyScore;
+  String matchHometeamFtScore;
+  String matchAwayteamFtScore;
+  String matchHometeamSystem;
+  String matchAwayteamSystem;
+  String matchLive;
+  String matchRound;
+  String matchStadium;
+  String matchReferee;
+  String teamHomeBadge;
+  String teamAwayBadge;
+  String leagueLogo;
+  String countryLogo;
+  String leagueYear;
+  String fkStageKey;
+  String stageName;
+  List<GoalScorer> goalscorer;
+  List<Card> cards;
+  Substitutions substitutions;
+  Lineup lineup;
+  List<ItemStatistic> statistics;
+  List<ItemStatistic> statistics1half;
+
+  Fixture(
+      {required this.matchId,
+      required this.countryId,
+      required this.countryName,
+      required this.leagueId,
+      required this.leagueName,
+      required this.matchDate,
+      required this.matchStatus,
+      required this.matchTime,
+      required this.matchHometeamId,
+      required this.matchHometeamName,
+      required this.matchHometeamScore,
+      required this.matchAwayteamName,
+      required this.matchAwayteamId,
+      required this.matchAwayteamScore,
+      required this.matchHometeamHalftimeScore,
+      required this.matchAwayteamHalftimeScore,
+      required this.matchHometeamExtraScore,
+      required this.matchAwayteamExtraScore,
+      required this.matchHometeamPenaltyScore,
+      required this.matchAwayteamPenaltyScore,
+      required this.matchHometeamFtScore,
+      required this.matchAwayteamFtScore,
+      required this.matchHometeamSystem,
+      required this.matchAwayteamSystem,
+      required this.matchLive,
+      required this.matchRound,
+      required this.matchStadium,
+      required this.matchReferee,
+      required this.teamHomeBadge,
+      required this.teamAwayBadge,
+      required this.leagueLogo,
+      required this.countryLogo,
+      required this.leagueYear,
+      required this.fkStageKey,
+      required this.stageName,
+      required this.goalscorer,
+      required this.cards,
+      required this.substitutions,
+      required this.lineup,
+      required this.statistics,
+      required this.statistics1half});
+
+  factory Fixture.fromJson(Map<String, dynamic> json) {
+    return Fixture(
+      matchId: json['match_id'],
+      countryId: json['country_id'],
+      countryName: json['country_name'],
+      leagueId: json['league_id'],
+      leagueName: json['league_name'],
+      matchDate: json['match_date'],
+      matchStatus: json['match_status'],
+      matchTime: json['match_time'],
+      matchHometeamId: json['match_hometeam_id'],
+      matchHometeamName: json['match_hometeam_name'],
+      matchHometeamScore: json['match_hometeam_score'],
+      matchAwayteamName: json['match_awayteam_name'],
+      matchAwayteamId: json['match_awayteam_id'],
+      matchAwayteamScore: json['match_awayteam_score'],
+      matchHometeamHalftimeScore: json['match_hometeam_halftime_score'],
+      matchAwayteamHalftimeScore: json['match_awayteam_halftime_score'],
+      matchHometeamExtraScore: json['match_hometeam_extra_score'],
+      matchAwayteamExtraScore: json['match_awayteam_extra_score'],
+      matchHometeamPenaltyScore: json['match_hometeam_penalty_score'],
+      matchAwayteamPenaltyScore: json['match_awayteam_penalty_score'],
+      matchHometeamFtScore: json['match_hometeam_ft_score'],
+      matchAwayteamFtScore: json['match_awayteam_ft_score'],
+      matchHometeamSystem: json['match_hometeam_system'],
+      matchAwayteamSystem: json['match_awayteam_system'],
+      matchLive: json['match_live'],
+      matchRound: json['match_round'],
+      matchStadium: json['match_stadium'],
+      matchReferee: json['match_referee'],
+      teamHomeBadge: json['team_home_badge'],
+      teamAwayBadge: json['team_away_badge'],
+      leagueLogo: json['league_logo'],
+      countryLogo: json['country_logo'],
+      leagueYear: json['league_year'],
+      fkStageKey: json['fk_stage_key'],
+      stageName: json['stage_name'],
+      cards: listCardsFromJson(json['cards']),
+      goalscorer: listGoalScorersFromJson(json['goalscorer']),
+      lineup: Lineup.fromJson(json['lineup']),
+      statistics1half: listItemStatisticsFromJson(json['statistics_1half']),
+      statistics: listItemStatisticsFromJson(json['statistics_1half']),
+      substitutions: Substitutions.fromJson(json['substitutions']),
+    );
+  }
+}
